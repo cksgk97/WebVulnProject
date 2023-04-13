@@ -20,14 +20,14 @@
    <body>
       <h2></h2>
       <!-- heading 1 -->
-      <h1 class="bold topp left" > $ Hack Pratice Site</h1>
+      <h1 class="bold topp left" > $ Web Vulnerability Testing Site</h1>
       <h2></h2>
       <!-- gray text --->
-      <l class="gray left" >Welcome to Hack</l>
+      <l class="gray left" >Welcome hackers</l>
       <br>
       <br>
       <!-- buttons -->
-      <a href="SQL1.jsp" class="button leftmar">SQL</a><a href="SQL3.jsp" class="button" Style="margin-left:5px">Various SQL</a><a href="XSS1.jsp" class="button" Style="margin-left:5px">XSS</a><a href="FILEupload.jsp" class="button" Style="margin-left:5px">FileUpload</a><a href="FILEdown.jsp" class="button" Style="margin-left:5px">FileDownload</a>
+      <a href="SQL1.jsp" class="button leftmar">SQL</a><a href="SQL3.jsp" class="button" Style="margin-left:5px">SQL Ⅱ</a><a href="XSS1.jsp" class="button" Style="margin-left:5px">XSS</a><a href="XSS4.jsp" class="button" Style="margin-left:5px">XSS Ⅱ</a><a href="FILEupload.jsp" class="button" Style="margin-left:5px">FileUpload</a><a href="FILEdown.jsp" class="button" Style="margin-left:5px">FileDownload</a>
       <% 
       if(mem_id == null && mem_pw == null){
          out.println("<a href=\"login.jsp\" class=\"button \">Login</a>");
@@ -40,6 +40,9 @@
       <!-- paragraph -->
       <br>
       <p>
+         This project is created to test major <h class="bold">web vulnerabilities</h>. Thoes vulnerabilities consists <h class="underline">SQLi</h> , <h class="underline">XSS</h>, <h class="underline">File upload & download</h> <h></h><h class="keyword">Et cetera</h></br>
+      </p>
+      <p>   
          Text can be <h class="bold">Bold</h>, <h class="ital">italic</h>, <h class="oblique">oblique</h>, <h class="underline">underline</h>, <h class="overline">overline</h>, <h class="strickthrough">strikethrough</h>or <h class='keyword'>keyword</h>.
       </p>
       <!-- paragraph -->

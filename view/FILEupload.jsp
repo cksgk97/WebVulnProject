@@ -22,7 +22,7 @@
    }else{
    %>
       <!-- heading 1 -->
-      <h1 class="bold topp left" > $ FILE</h1>
+      <h1 class="bold topp left" > $ FileUpload</h1>
       <h2></h2>
       <!-- gray text --->
       <l class="gray left" >Upload a file with file modulation</l>

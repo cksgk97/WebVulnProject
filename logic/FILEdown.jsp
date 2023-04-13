@@ -13,9 +13,11 @@
 <body>
 	<% 
 	
+    request.getParameter("filename");
+    
 	request.setCharacterEncoding("utf-8");
 
-	String downLoadFile = "C:\\Program Files\\Java\\Server\\apache-tomcat-9.0.73\\webapps\\chan\\upload\\suji.jpg"; 
+	String downLoadFile = "C:\\Program Files\\Java\\Server\\apache-tomcat-9.0.73\\webapps\\chan\\upload\\" + filename;  
   
 	File file = new File(downLoadFile);
     FileInputStream in = new FileInputStream(downLoadFile);
