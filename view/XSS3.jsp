@@ -9,7 +9,7 @@
 <html>
    <head>
       <link rel="icon" href="https://avatars.githubusercontent.com/u/69230350?v=4">
-      <title>Lv1.XSS</title>
+      <title>Lv3.XSS</title>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -19,16 +19,22 @@
       <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autoload=true&amp;skin=sunburst&amp;lang=css" defer=""></script>   
    </head>
    <body>
+      
    <%
+   String XSS1 = (String) session.getAttribute("XSS1");
    if(mem_id==null && mem_pw == null){
-     out.println("<script>alert(\"LOGIN REQUIRED\"); location.href=\"../view/index.jsp\"</script>");
-   }else{
-   %>
+    out.println("<script>alert(\"LOGIN REQUIRED\"); location.href=\"../view/index.jsp\"</script>");
+   }
+   if(XSS1==null){
+      out.println("<script>alert(\"You can try after clearing Level 2.\"); location.href=\"../view/XSS2.jsp\"</script>");
+      } else{
+      %>
       <!-- heading 1 -->
-      <h1 class="bold topp left" > $ Lv1.XSS</h1>
+      <h1 class="bold topp left" > $ Lv3.XSS</h1>
       <h2></h2>
       <!-- gray text --->
       <l class="gray left" >Run alert to clear and move to the next level</l>
+
       <br>
       </br>
       <!-- buttons -->
@@ -44,7 +50,7 @@
       </br>
 
         </br>
-        <form action = "../view/XSS1.jsp" class="login-container" method="post" style="margin-left: 5%;">
+        <form action = "../view/XSS3.jsp" class="login-container" method="post" style="margin-left: 5%;">
 
         <textarea style="width: 30%; height: 15em; border: none; resize: none; background-color: #3D3D3D; color: white; border: 2px; border-color: azure; border-radius: 3%; outline-color: #BAB9B9;" placeholder="Content" required name="content"></textarea></br></br>
         <input type="submit" value="Submit" style="margin-left: 25%; background-color: #3D3D3D; color: white;">
@@ -55,7 +61,12 @@
 <% 
 
    String content = request.getParameter("content");
-   if (content != null && !content.isEmpty()) {
+   String sanitizedContent1 = null;
+   if (content != null) {
+      sanitizedContent1 = content.replaceAll("<|>", "");
+   }
+
+   
    String sql1 = "SELECT MAX(NUM) FROM XSS";
    Statement stmt = conn.createStatement();
    ResultSet rs = stmt.executeQuery(sql1);
@@ -63,12 +74,12 @@
    if(rs.next()){
       num = rs.getInt("max(num)")+ 1;
    }
-   
+
    PreparedStatement pstmt = null;
    String sql2 = "INSERT INTO XSS (NUM, CONTENT, ID) VALUES (?, ?, ?)";
    pstmt = conn.prepareStatement(sql2);
    pstmt.setString(1, String.valueOf(num));
-   pstmt.setString(2, content);
+   pstmt.setString(2, sanitizedContent1);
    pstmt.setString(3, mem_id);
    pstmt.executeUpdate();
 
@@ -79,19 +90,15 @@
 
    if (rs1 != null && rs1.next()) {
       String content1 = rs1.getString("CONTENT");
-      if (content1.matches(".*(<script>|<\\/script>|alert\\(|onerror=|onload=|eval\\().*")) {
-         session.setAttribute("XSS", content1);         
-         out.println("<p style='display: none;'>" + content1 + "</p><script>location.href=\"../view/XSS2.jsp\"</script>");
-      } else {
-         out.println("<script>location.href=\"../view/XSS1.jsp\"</script>");
-      }
+   if (content1 != null) {
+      out.println("<p style='display: none;'>" + content1 + "</p>");
    }
-   
+}
+ 
    pstmt.close();
    conn.close();
-}
-%>
 
+%>
       </br>
       <div class="horizontalscroll left">
          <l>Enjoy the Hack</l>
@@ -111,8 +118,9 @@
          <!-- page link -->
          <p>
             <a href="#" onClick="history.back()" title="" target="_self" class="w3-hover-text-green">&#8592 Back</a>
-            <h> & </h> <a href="XSS2.jsp" title="" target="_self" class="w3-hover-text-green">NEXT &#8594</a></br>
+            <h> & </h> <a href="XSS3.jsp" title="" target="_self" class="w3-hover-text-green">NEXT &#8594</a></br>
           <a href="../view/index.jsp" title="" target="_self" class="w3-hover-text-green">HOME</a>
+            
             
             
          </p>

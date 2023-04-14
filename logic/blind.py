@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup as bs
 
 URL = 'http://localhost:8000/chan/view/SQL3.jsp'
-sessions = {'JSESSIONID': 'F3D736630BDEF7FD63AF590D8B5FCDFC'}
+sessions = {'JSESSIONID': '6036BF1D0C0D8036B102494A2991CDCD'}
 
 # 테이블 개수
 max_a = 0

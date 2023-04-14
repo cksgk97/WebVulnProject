@@ -13,16 +13,16 @@
 <body>
 	<% 
 	
-    request.getParameter("filename");
+    String filename = request.getParameter("filename");
     
 	request.setCharacterEncoding("utf-8");
 
-	String downLoadFile = "C:\\Program Files\\Java\\Server\\apache-tomcat-9.0.73\\webapps\\chan\\upload\\" + filename;  
+	String downLoadFile = "C:\\Program Files\\Java\\Server\\apache-tomcat-9.0.73\\webapps\\chan\\images\\" + filename;  
   
 	File file = new File(downLoadFile);
     FileInputStream in = new FileInputStream(downLoadFile);
 	
-    String fileName = "suji.jpg";
+    String fileName = filename;
     fileName = URLEncoder.encode(fileName, "UTF-8").replaceAll("\\+", "%20");
     
     response.setContentType("application/octet-stream; charset=UTF-8");

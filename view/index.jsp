@@ -29,6 +29,7 @@
       <!-- buttons -->
       <a href="SQL1.jsp" class="button leftmar">SQL</a><a href="SQL3.jsp" class="button" Style="margin-left:5px">SQL Ⅱ</a><a href="XSS1.jsp" class="button" Style="margin-left:5px">XSS</a><a href="XSS4.jsp" class="button" Style="margin-left:5px">XSS Ⅱ</a><a href="FILEupload.jsp" class="button" Style="margin-left:5px">FileUpload</a><a href="FILEdown.jsp" class="button" Style="margin-left:5px">FileDownload</a>
       <% 
+      session.removeAttribute("XSS");
       if(mem_id == null && mem_pw == null){
          out.println("<a href=\"login.jsp\" class=\"button \">Login</a>");
       }else{

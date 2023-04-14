@@ -20,7 +20,7 @@
 
     if (rs.next()){ 
         session.setAttribute("SQL",ses);
-        out.println("<script>location.href=\"../view/SQL2.jsp\"</script>");
+        out.println("<script>alert(\"SQL Injection Success\"); location.href=\"../view/SQL2.jsp\"</script>");
         
     } else {
         out.println("<script>alert(\"Retry\"); location.href=\"../view/SQL1.jsp\"</script>");

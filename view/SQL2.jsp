@@ -19,10 +19,10 @@
     String SQL = (String) session.getAttribute("SQL");
     if(mem_id==null && mem_pw == null){
       out.println("<script>alert(\"LOGIN REQUIRED\"); location.href=\"../view/index.jsp\"</script>");
-      }else if(SQL==null){
+      }
+      if(SQL==null){
       out.println("<script>alert(\"You can try after clearing Level 1.\"); location.href=\"../view/SQL1.jsp\"</script>");
-   } else{
-      out.println("<script>alert(\"SQL Injection SUCCESS\")</script>");
+      }else{
     %>
     <div class="login">
       

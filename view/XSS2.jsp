@@ -24,11 +24,11 @@
    String XSS = (String) session.getAttribute("XSS");
    if(mem_id==null && mem_pw == null){
     out.println("<script>alert(\"LOGIN REQUIRED\"); location.href=\"../view/index.jsp\"</script>");
-   } else if(XSS==null){
+   }
+   if(XSS==null){
       out.println("<script>alert(\"You can try after clearing Level 1.\"); location.href=\"../view/XSS1.jsp\"</script>");
-   } else{
-      out.println("<script>alert(\"XSS SUCCESS\")</script>");
-   %>
+      } else{
+      %>
       <!-- heading 1 -->
       <h1 class="bold topp left" > $ Lv2.XSS</h1>
       <h2></h2>
@@ -59,7 +59,7 @@
       <br>
       
 <% 
-
+      
    String content = request.getParameter("content");
    String sanitizedContent1 = null;
    if (content != null) {
@@ -90,12 +90,17 @@
 
    if (rs1 != null && rs1.next()) {
       String content1 = rs1.getString("CONTENT");
-   if (content1 != null) {
-      String sanitizedContent = content1.replaceAll("(?i)<script.*?>.*?</script.*?>", "");
-      out.println("<p style='visibility: hidden; margin: 0; padding: 0; display: none;'>" + sanitizedContent + "</p>");
+      if (content1 != null) {
+            if(content1.matches(".*(<script>|<\\/script>|alert\\(|onerror=|onload=|eval\\().*")){
+               session.setAttribute("XSS1",content1);
+               out.println("<p style='display: none;'>" + content1 + "</p><script>location.href='../view/XSS3.jsp'</script>");
+
+            }else{
+         out.println("<script>location.href=\"../view/XSS2.jsp\"</script>");
+      }
+      
    }
 }
- 
    pstmt.close();
    conn.close();
 

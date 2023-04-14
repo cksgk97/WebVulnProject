@@ -39,7 +39,7 @@
       <br>
       
       </br>
-      <span style="display:inline-block; margin-left: 2.7%; color: white; font-size: 18px; font-family: monaco;">FileName : </span><a href="../logic/FILEdown.jsp?filename=Suji.jpg" style="display:inline-block; margin-left: 1%; color: white; text-decoration: none;">Suji.jpg</a>
+      <span style="display:inline-block; margin-left: 2.7%; color: white; font-size: 18px; font-family: monaco;">FileName : </span><a href="../logic/FILEdown.jsp?filename=hacker3.png" style="display:inline-block; margin-left: 1%; color: white; text-decoration: none;">hacker3.png</a>
    <%
       }
       %>

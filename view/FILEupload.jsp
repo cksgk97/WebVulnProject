@@ -41,26 +41,31 @@
       </br>
 
         </br>
-        <form action = "../logic/FILEaction.jsp" class="login-container" enctype="multipart/form-data" method="post" style="margin-left: 5%;">
-        <input type="file" name="uploadFile" style="color:white; background-color: #3D3D3D; font-family: monaco;" required></br></br>
-        <input type="submit" value="Submit" style="margin-left: 16%; background-color: #3D3D3D; color: white; font-family: monaco;">
-        </form>
-      <br>
-      
-   <%
-      String sql = "SELECT FILENAME,FILEDATA FROM BOARD WHERE ID = '" + mem_id + "' and num = (SELECT MAX(num) FROM BOARD WHERE ID = '" + mem_id + "')";
-      Statement stmt = conn.createStatement();
-      ResultSet rs = stmt.executeQuery(sql);
-      if(rs.next()){
-         String filename = rs.getString("FILENAME");
-         String filedata = rs.getString("FILEDATA");
-   %>
-      </br>
+
+   <div style="display: inline-block; vertical-align: top; margin-right: 20%;">
+      <form action="../logic/FILEaction.jsp" enctype="multipart/form-data" method="post" style="margin-left: 10%;">
+         <input type="file" name="uploadFile" style="color:white; background-color: #3D3D3D; font-family: monaco;" required><br><br>
+         <input type="submit" value="Submit" style="margin-left: 86%; background-color: #3D3D3D; color: white; font-family: monaco;">
+      </form>
+   </div>
+   <div style="display: inline-block; vertical-align: top;">
+  <%
+    String sql = "SELECT FILENAME,FILEDATA FROM BOARD WHERE ID = '" + mem_id + "' and num = (SELECT MAX(num) FROM BOARD WHERE ID = '" + mem_id + "')";
+    Statement stmt = conn.createStatement();
+    ResultSet rs = stmt.executeQuery(sql);
+    if (rs.next()) {
+      String filename = rs.getString("FILENAME");
+      String filedata = rs.getString("FILEDATA");
+  %>
+    <img style="width: 20%;" src="../upload/<%=filedata%>"></div>
+   </br>
+</br>
       <form action="../logic/FILEdownload.jsp" method="post"> 
          <input type="hidden" name="filename" value="<%=filename%>">
          <input type="hidden" name="filedata" value="<%=filedata%>">
-         <a href="javascript:;" onclick="document.forms[1].submit();" style="margin-left: 5%; color: white;"><%=filedata%></a>
+         <a href="javascript:;" onclick="document.forms[1].submit();" style="margin-left: 37.5%; color: white;"><%=filedata%></a>
       </form>
+      
    <%
       }
       %>
