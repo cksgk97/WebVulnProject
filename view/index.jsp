@@ -56,7 +56,7 @@
       
       <p>Next paragraph.</p>
       <!-- link inside a text line -->
-      <p>Find details about this page on <a href="#" title="hacker-theme" target="_self" class="linkk bold"> Github</a>. Original project also can be found on Github.</p>
+      <p>Find details about this page on <a href="https://github.com/cksgk97/WebVulnProject.git" title="hacker-theme" target="_self" class="linkk bold"> Github</a>. Original project also can be found on Github.</p>
       
       <h1 class="left topp">Heading 1</h1>
       <!-- paragraph -->
