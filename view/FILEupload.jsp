@@ -41,36 +41,58 @@
       </br>
 
         </br>
-
+   <%
+    String sql = "SELECT FILENAME,FILEDATA FROM BOARD WHERE ID = '" + mem_id + "' and num = (SELECT MAX(num) FROM BOARD WHERE ID = '" + mem_id + "')";
+    Statement stmt = conn.createStatement();
+    ResultSet rs = stmt.executeQuery(sql);
+    String filename = "";
+    String filedata = "";
+    if (rs.next()) {
+      filename = rs.getString("FILENAME");
+      filedata = rs.getString("FILEDATA");
+    }
+     if(filename==null || filedata==null){
+      %>
+      <form action="../logic/FILEaction.jsp" enctype="multipart/form-data" method="post" style="margin-left: 10%;">
+         <input type="file" name="uploadFile" style="color:white; background-color: #3D3D3D; font-family: monaco;" required><br><br>
+         <input type="submit" value="Submit" style="margin-left: 86%; background-color: #3D3D3D; color: white; font-family: monaco;">
+      </form>
+      </div>
+      <%
+     }else{
+      %>
    <div style="display: inline-block; vertical-align: top; margin-right: 20%;">
       <form action="../logic/FILEaction.jsp" enctype="multipart/form-data" method="post" style="margin-left: 10%;">
          <input type="file" name="uploadFile" style="color:white; background-color: #3D3D3D; font-family: monaco;" required><br><br>
          <input type="submit" value="Submit" style="margin-left: 86%; background-color: #3D3D3D; color: white; font-family: monaco;">
       </form>
    </div>
-   <div style="display: inline-block; vertical-align: top;">
+   
   <%
-    String sql = "SELECT FILENAME,FILEDATA FROM BOARD WHERE ID = '" + mem_id + "' and num = (SELECT MAX(num) FROM BOARD WHERE ID = '" + mem_id + "')";
-    Statement stmt = conn.createStatement();
-    ResultSet rs = stmt.executeQuery(sql);
-    if (rs.next()) {
-      String filename = rs.getString("FILENAME");
-      String filedata = rs.getString("FILEDATA");
-  %>
-    <img style="width: 20%;" src="../upload/<%=filedata%>"></div>
+    String sql1 = "SELECT FILENAME,FILEDATA FROM BOARD WHERE ID = '" + mem_id + "' and num = (SELECT MAX(num) FROM BOARD WHERE ID = '" + mem_id + "')";
+    Statement stmt1 = conn.createStatement();
+    ResultSet rs1 = stmt1.executeQuery(sql1);
+    if (rs1.next()) {
+      String filename1 = rs.getString("FILENAME");
+      String filedata1 = rs.getString("FILEDATA");
+     %>
+     <div style="display: inline-block; vertical-align: top;">
+    <img style="width: 20%;" src="../upload/<%=filedata1%>"></div>
    </br>
 </br>
-      <form action="../logic/FILEdownload.jsp" method="post"> 
-         <input type="hidden" name="filename" value="<%=filename%>">
-         <input type="hidden" name="filedata" value="<%=filedata%>">
-         <a href="javascript:;" onclick="document.forms[1].submit();" style="margin-left: 37.5%; color: white;"><%=filedata%></a>
+      <form action="../logic/FILEdownload.jsp" method="post" > 
+         <input type="hidden" name="filename" value="<%=filename1%>">
+         <input type="hidden" name="filedata" value="<%=filedata1%>">
+         <a href="javascript:;" onclick="document.forms[1].submit();" style="margin-left: 37.5%; color: white;"><%=filedata1%></a>
       </form>
       
    <%
+   }
       }
       %>
    </br></br>
       </br>
+   
       <div class="horizontalscroll left">
          <l>Enjoy the Hack</l>
       </div>
@@ -110,6 +132,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
       <script src="../assets/js/ip.js"> </script>
    </div>
+  
 <%
 }
 %>
