@@ -16,7 +16,6 @@
   </head>
   <body>
     <%
-    session.removeAttribute("SQL");
     if(mem_id==null && mem_pw == null){
       out.println("<script>alert(\"LOGIN REQUIRED\"); location.href=\"../view/index.jsp\"</script>");
     }else{

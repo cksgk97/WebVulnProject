@@ -11,25 +11,28 @@
 <% 
     String id = request.getParameter("id");
     String pw = request.getParameter("password");
-
+    String id1 = "";
+    String pw1 = "";
+    if (id != null || pw !=null) {
+      id1 = id.replaceAll("'", "");
+      pw1 = pw.replaceAll("'", "");
+    }
     ResultSet rs = null;
 	Statement stmt = conn.createStatement();
 
 try{
-    String sql = "SELECT * FROM member where M_ID='" + id + "'\n"
-         + "AND M_PASS='" + pw + "'";
+    String sql = "SELECT * FROM member where M_ID='" + id1 + "' AND M_PASS='" + pw1 + "'";
 
     rs = stmt.executeQuery(sql);
 
     if (rs.next()){ 
-        session.setAttribute("SQL1",pw);
-        out.println("<script>alert(\"SQL Injection Success\"); location.href=\"../view/SQL3.jsp\"</script>");
+        out.println("<script>alert(\"SQL Injection Success\"); location.href=\"../view/index.jsp\"</script>");
         
     } else {
-        out.println("<script>alert(\"Retry\"); location.href=\"../view/SQL2.jsp\"</script>");
+        out.println("<script>alert(\"Retry\"); location.href=\"../view/SQL5.jsp\"</script>");
     }   
     }catch(SQLException e){
-        out.println("<script>alert(\"Retry\"); location.href=\"../view/SQL2.jsp\"</script>");
+        out.println("<script>alert(\"Retry\"); location.href=\"../view/SQL5.jsp\"</script>");
     }
 
 %>

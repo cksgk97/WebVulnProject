@@ -46,7 +46,7 @@
     if(rs.next()){
         String dbID = rs.getString("M_ID");
             if(dbID.equals(id)){
-                out.println("<script>alert(\"중복된 아이디입니다.\"); location.href=\"../view/signup.jsp\"</script>");
+                out.println("<script>alert(\"Duplicate ID.\"); location.href=\"../view/signup.jsp\"</script>");
             }
     }else{
 
@@ -55,7 +55,7 @@
     stmt.executeUpdate(sql);
     stmt.close();
     conn.close();
-    out.println("<script>alert(\"회원가입에 성공하였습니다.\"); location.href=\"../view/login.jsp\" </script>");
+    out.println("<script>alert(\"Successful Signup\"); location.href=\"../view/login.jsp\" </script>");
     }
 %>
 

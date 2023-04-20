@@ -30,6 +30,7 @@
 
         <p>
           <a href="#" onClick="history.back()" title="" target="_self" class="w3-hover-text-green">&#8592 Back</a>
+          <h> & </h> <a href="index.jsp" title="" target="_self" class="w3-hover-text-green">HOME</a></p></br>
                     
         </p>
         <h class="w3-center"><em>Requested from </em></h>

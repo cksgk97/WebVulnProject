@@ -5,7 +5,7 @@
 <html>
   <head>
     <link rel="icon" href="https://avatars.githubusercontent.com/u/69230350?v=4">
-    <title>Lv3. SQL Injection</title>
+    <title>Lv4. SQL Injection</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../assets/css/login_sign_up.css">
@@ -16,18 +16,18 @@
   </head>
   <body>
     <%
-    String SQL1 = (String) session.getAttribute("SQL1");
+    String SQL2 = (String) session.getAttribute("SQL2");
     if(mem_id==null && mem_pw == null){
       out.println("<script>alert(\"LOGIN REQUIRED\"); location.href=\"../view/index.jsp\"</script>");
       }
-      if(SQL1==null){
-      out.println("<script>alert(\"You can try after clearing Level 2.\"); location.href=\"../view/SQL2.jsp\"</script>");
+      if(SQL2==null){
+      out.println("<script>alert(\"You can try after clearing Level 3.\"); location.href=\"../view/SQL3.jsp\"</script>");
       }else{
     %>
     <div class="login">
       
-      <h2 class="login-header">$ Lv3. SQL Injection</h2>
-      <form action="../logic/SQLaction3.jsp" class="login-container" method="post">
+      <h2 class="login-header">$ Lv4. SQL Injection</h2>
+      <form action="../logic/SQLaction4.jsp" class="login-container" method="post">
         <p><input type="text" placeholder="ID" required name="id"></p>
         <p><input type="password" placeholder="Password" required name="password"></p>
         <p><input type="submit" value="Log in"></p>
@@ -41,7 +41,7 @@
 
         <p>
           <a href="#" onClick="history.back()" title="" target="_self" class="w3-hover-text-green">&#8592 Back</a>
-          <h> & </h> <a href="SQL4.jsp" title="" target="_self" class="w3-hover-text-green">NEXT &#8594</a></p></br>
+          <h> & </h> <a href="SQL5.jsp" title="" target="_self" class="w3-hover-text-green">NEXT &#8594</a></p></br>
           <a href="../view/index.jsp" title="" target="_self" class="w3-hover-text-green">HOME</a>
                     
         </p>
