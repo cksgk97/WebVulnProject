@@ -31,7 +31,7 @@
       <h2></h2>
       <!-- gray text --->
       <l class="gray left" >Run alert to clear and move to the next level</l>
-      <br>
+
       </br>
       <!-- buttons -->
       <a href="../view/index.jsp" class="button leftmar ">HOME</a>
@@ -41,7 +41,7 @@
       <hr>
       <!-- paragraph -->
       
-      <br>
+  
       
       </br>
       <form action="XSS4.jsp" method="get">
@@ -51,9 +51,8 @@
          <a style="color: white; margin-left:2%;" href="?img=../images/hacker4.jpg">Image 4</a>
          <input type = "hidden" name = "img">
       </form>
-      
-      <br>
-      
+
+      </br>
       <%
          String image = request.getParameter("img");
          if (image == null || image.equals("")) {
@@ -62,11 +61,12 @@
             out.println("<img style=\"width:30%; margin-left:10%; margin-bottom: 3%;\" src='" + image + "'");
          }
       %>   
+
       </br>
       <div class="horizontalscroll left">
          <l>Enjoy the theme</l>
       </div>
-      <br>
+
       <!-- footer -->
       <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
          <button onclick="topFunction()" class="w3-button w3-light-grey" title="Go to top"><i class="fa fa-arrow-up w3-margin-right w3-light-grey"></i>To Top</button>
@@ -81,7 +81,8 @@
          <!-- page link -->
          <p>
             <a href="#" onClick="history.back()" title="" target="_self" class="w3-hover-text-green">&#8592 Back</a>
-            <h> & </h> <a href="hacker-theme-page3.html" title="" target="_self" class="w3-hover-text-green">3</a>
+            <h> & </h> <a href="XSS5.jsp" title="" target="_self" class="w3-hover-text-green">NEXT &#8594</a></br>
+            <a href="../view/index.jsp" title="" target="_self" class="w3-hover-text-green">HOME</a>
             
             
          </p>

@@ -23,7 +23,7 @@
    }else{
    %>
       <!-- heading 1 -->
-      <h1 class="bold topp left" > $ SQL Injection</h1>
+      <h1 class="bold topp left" > $ SQL InjectionⅡ</h1>
       <h2></h2>
       <!-- gray text --->
       <l class="gray left" >Take advantage of SQL Injection</l>
