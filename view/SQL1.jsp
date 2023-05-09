@@ -39,14 +39,15 @@
 			background-color: rgba(0, 0, 0, 0.2); /* 팝업 배경색 지정 */
 		}
 		#popup .content {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			background-color:#1A1A1A;
-			padding: 20px;
-			border-radius: 10px;
-		}
+		display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #1A1A1A;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    }
 	</style>
 
   </head>
@@ -71,8 +72,8 @@
 		<div class="content">
 			<h2>Lv1. SQL Injection</h2>
 			<pre class="prettyprint">
-  // Javascript with syntax highlighting
-  // thelearn-tech@github
+  // This is Hint Page
+  // I'll show you the code used on this page 
                      
 String id = request.getParameter("id");
 String pw = request.getParameter("password");

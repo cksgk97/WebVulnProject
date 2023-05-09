@@ -27,7 +27,7 @@
       <br>
       <br>
       <!-- buttons -->
-      <a href="SQL1.jsp" class="button leftmar">SQL</a><a href="SQL8.jsp" class="button" Style="margin-left:5px">SQL Ⅱ</a><a href="XSS1.jsp" class="button" Style="margin-left:5px">XSS</a><a href="XSS4.jsp" class="button" Style="margin-left:5px">XSS Ⅱ</a><a href="FILEupload.jsp" class="button" Style="margin-left:5px">FileUpload</a><a href="FILEdown.jsp" class="button" Style="margin-left:5px">FileDownload</a>
+      <a href="SQL1.jsp" class="button leftmar">SQL</a><a href="SQL8.jsp" class="button" Style="margin-left:5px">SQL Ⅱ</a><a href="XSS1.jsp" class="button" Style="margin-left:5px">XSS</a><a href="XSS4.jsp" class="button" Style="margin-left:5px">XSS Ⅱ</a><a href="FILEupload.jsp" class="button" Style="margin-left:5px">Fileupload</a><a href="FILEdown.jsp" class="button" Style="margin-left:5px">Filedownload</a><a href="question.jsp" class="button" Style="margin-left:5px">CSRF</a>
       <% 
       session.removeAttribute("XSS");
       session.removeAttribute("SQL");

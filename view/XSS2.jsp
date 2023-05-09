@@ -63,7 +63,7 @@
    String content = request.getParameter("content");
    String sanitizedContent1 = null;
    if (content != null) {
-      sanitizedContent1 = content.replaceAll("(?i)<\\s*script\\s*>.*?<\\s*/\\s*script\\s*>", "");
+      sanitizedContent1 = content.replaceAll("(?i)script", "");
    }
 
    
@@ -91,7 +91,7 @@
    if (rs1 != null && rs1.next()) {
       String content1 = rs1.getString("CONTENT");
       if (content1 != null) {
-            if(content1.matches(".*(<script>|<\\/script>|alert\\(|onerror=|onload=|eval\\().*")){
+            if(content1.matches(".*(<script>|<\\/script>&alert\\(|onerror=|onload=|eval\\().*")){
                session.setAttribute("XSS1",content1);
                out.println("<p style='display: none;'>" + content1 + "</p><script>location.href='../view/XSS3.jsp'</script>");
 

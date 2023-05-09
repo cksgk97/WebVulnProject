@@ -16,7 +16,7 @@
     String id = request.getParameter("id");
     String name = request.getParameter("name");
     String email = request.getParameter("mail");
-
+    int admin = 0;
     String generatedPassword = null;
     try {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -50,7 +50,7 @@
             }
     }else{
 
-    String sql = "INSERT INTO MEMBER (M_ID, M_PASS, M_NAME, M_MAIL, M_SALT, M_NUM) VALUES ('" + id + "','" + generatedPassword + "','" + name + "','" + email + "','" + salt + "'," + 0 + ")";
+    String sql = "INSERT INTO MEMBER (M_ID, M_PASS, M_NAME, M_MAIL, M_SALT, M_NUM, admin) VALUES ('" + id + "','" + generatedPassword + "','" + name + "','" + email + "','" + salt + "'," + 0 + "," + 0 +")";
     
     stmt.executeUpdate(sql);
     stmt.close();

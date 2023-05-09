@@ -4,15 +4,52 @@
 <!doctype html>
 <html>
   <head>
-    <link rel="icon" href="https://avatars.githubusercontent.com/u/69230350?v=4">
+<link rel="icon" href="https://avatars.githubusercontent.com/u/69230350?v=4">
     <title>Lv4. SQL Injection</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../assets/css/login_sign_up.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autoload=true&amp;skin=sunburst&amp;lang=css" defer=""></script>
+      <!-- Version 1.0.1-->
+   </head>
+    <script type="text/javascript">
+		function openPopup() {
+			var popup = document.getElementById("popup");
+			popup.style.display = "block";
+		}
+
+		function closePopup() {
+			var popup = document.getElementById("popup");
+			popup.style.display = "none";
+		}
+	</script>
+  <style type="text/css">
+  <style type="text/css">
+		/* 팝업 스타일 */
+		#popup {
+			display: none; /* 팝업 초기 상태는 숨김 처리 */
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.2); /* 팝업 배경색 지정 */
+		}
+		#popup .content {
+		display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #1A1A1A;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    }
+	</style>
   </head>
   <body>
     <%
@@ -33,6 +70,37 @@
         <p><input type="submit" value="Log in"></p>
       </form>
       <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+      <button onclick="openPopup()">HINT</button>
+      <div id="popup">
+		<div class="content">
+			<h2>Lv4. SQL Injection</h2>
+			<pre class="prettyprint">
+// This is Hint Page
+// I'll show you the code used on this page 
+                     
+String id = request.getParameter("id");
+String pw = request.getParameter("password");
+
+String id1 = "";
+String pw1 = "";
+    
+  if (id != null || pw !=null) {
+      id1 = id.replaceAll("--|#", "");
+      pw1 = pw.replaceAll("--", "");
+    }
+  
+  ResultSet rs = null;
+	Statement stmt = conn.createStatement();
+
+try{
+    String sql = "SELECT * FROM member where M_ID='" + id1 + "'\n"
+         + "AND M_PASS='" + pw1 + "'";
+    }
+    rs = stmt.executeQuery(sql);
+</pre>
+			<button onclick="closePopup()">Close</button>
+		</div>
+	</div>
         <p>No Account! <a href="javascript:alert('문제 푸세요.');" onfocus="this.blur()" target="_self" class="linkk bold"><b>Sign up</b></a></p>
         
         <a href="javascript:alert('문제 푸세요.');" onfocus="this.blur()" <i class="fa fa-twitter w3-hover-opacity"></a>

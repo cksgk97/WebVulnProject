@@ -9,7 +9,7 @@
 <html>
    <head>
       <link rel="icon" href="https://avatars.githubusercontent.com/u/69230350?v=4">
-      <title>Lv1.XSS</title>
+      <title>Questions</title>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -19,20 +19,20 @@
       <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autoload=true&amp;skin=sunburst&amp;lang=css" defer=""></script>   
    </head>
    <body>
-   <%
+    <%
    if(mem_id==null && mem_pw == null){
      out.println("<script>alert(\"LOGIN REQUIRED\"); location.href=\"../view/index.jsp\"</script>");
    }else{
    %>
       <!-- heading 1 -->
-      <h1 class="bold topp left" > $ Lv1.XSS</h1>
+      <h1 class="bold topp left" > $ Contact</h1>
       <h2></h2>
       <!-- gray text --->
-      <l class="gray left" >Run alert to clear and move to the next level</l>
+      <l class="gray left" >Please inquire about any inconvenience</l>
       <br>
       </br>
       <!-- buttons -->
-      <a href="../view/index.jsp" class="button leftmar ">HOME</a>
+      <a href="../view/index.jsp" class="button leftmar ">HOME</a><a href="manager.jsp" Style="margin-left:10px" class="button leftmar">Contact details</a><a href="myquestion.jsp" Style="margin-left:10px" class="button leftmar">my questions</a>
       
       
       <!-- horizontal rule -->
@@ -41,55 +41,36 @@
       
       <br>
       
-      </br>
-
-        </br>
-        <form action = "../view/XSS1.jsp" class="login-container" method="post" style="margin-left: 5%;">
-
-        <textarea style="width: 30%; height: 15em; border: none; resize: none; background-color: #3D3D3D; color: white; border: 2px; border-color: azure; border-radius: 3%; outline-color: #BAB9B9;" placeholder="Content" required name="content"></textarea></br></br>
-        <input type="submit" value="Submit" style="margin-left: 25%; background-color: #3D3D3D; color: white;">
-
-        </form>
+      
+      <form action = "../view/question.jsp" class="login-container" method="post" style="margin-left: 5%;">
+         <input style="display: block; width: 10%; height: 2em; border: none; resize: none; background-color: #3D3D3D; color: white; border: 2px; border-color: azure; border-radius: 3%; outline-color: #BAB9B9;" type="text" placeholder="Subject" required name="subject"></br>
+         <textarea style="display: block; width: 30%; height: 15em; border: none; resize: none; background-color: #3D3D3D; color: white; border: 2px; border-color: azure; border-radius: 3%; outline-color: #BAB9B9;" placeholder="Content" required name="content"></textarea></br></br>
+         <input type="submit" value="Submit" style="margin-left: 25%; background-color: #3D3D3D; color: white;">
+      </form>
       <br>
       
 <% 
-
+   String subject = request.getParameter("subject");
    String content = request.getParameter("content");
    if (content != null && !content.isEmpty()) {
-   String sql1 = "SELECT MAX(NUM) FROM XSS";
+   String sql1 = "SELECT MAX(NUM) FROM BOARD1";
    Statement stmt = conn.createStatement();
    ResultSet rs = stmt.executeQuery(sql1);
    int num = 0;
    if(rs.next()){
-      num = rs.getInt("max(num)")+ 1;
+      num = rs.getInt("MAX(NUM)")+ 1;
    }
    
    PreparedStatement pstmt = null;
-   String sql2 = "INSERT INTO XSS (NUM, CONTENT, ID) VALUES (?, ?, ?)";
+   String sql2 = "INSERT INTO BOARD1 (NUM, SUBJECT, CONTENT, ID, CUR_DATE) VALUES (?, ?, ?, ?, SYSDATE)";
    pstmt = conn.prepareStatement(sql2);
    pstmt.setString(1, String.valueOf(num));
-   pstmt.setString(2, content);
-   pstmt.setString(3, mem_id);
+   pstmt.setString(2, subject);
+   pstmt.setString(3, content);
+   pstmt.setString(4, mem_id);
    pstmt.executeUpdate();
-
-   String sql3 = "SELECT CONTENT FROM XSS WHERE NUM = (SELECT MAX(NUM) FROM XSS) AND ID = ?";
-   pstmt = conn.prepareStatement(sql3);
-   pstmt.setString(1, mem_id);
-   ResultSet rs1 = pstmt.executeQuery();
-
-   if (rs1 != null && rs1.next()) {
-      String content1 = rs1.getString("CONTENT");
-      if (content1.matches(".*(<script>|<\\/script>&alert\\(|onerror=|onload=|eval\\().*")) {
-         session.setAttribute("XSS", content1);         
-         out.println("<p style='display: none;'>" + content1 + "</p><script>location.href=\"../view/XSS2.jsp\"</script>");
-      } else {
-         out.println("<script>location.href=\"../view/XSS1.jsp\"</script>");
-      }
+   out.println("<script>alert(\"You have successfully registered.\")</script>");
    }
-   
-   pstmt.close();
-   conn.close();
-}
 %>
 
       </br>
@@ -133,8 +114,8 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
       <script src="../assets/js/ip.js"> </script>
    </div>
-<%
-}
-%>
+   <%
+   }
+   %>
 </body>
 </html>
